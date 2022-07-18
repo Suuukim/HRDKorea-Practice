@@ -1,3 +1,5 @@
+<%@page import="java.sql.*"%>
+<%@page import="DBPKG.Util"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,12 +16,33 @@
 background-color: lightgray;">
 <h2 style = " text-align: center;"> <b>회원목록조회/수정</b> </h2> <br>
 
+<form style= "display:flex; align-items: center; justify-content:center; text-align: center">
+<table border="1">
 
+<tr>
+	<td> 회원번호 </td>
+	<td> 회원성명 </td>
+	<td> 전화번호 </td>
+	<td> 주소 </td>
+	<td> 가입일자 </td>
+	<td> 고객등급 </td>
+	<td> 거주지역 </td>
+</tr>
 
+<%
+Connection conn = null;
+Statement stmt = null;
+String grade = "";
 
+try {
+	conn = Util.getConnection();
+	stmt = conn.createStatement();
+	String sql = "SELECT * FROM member_tbl_02"
+}
+%>
 
-
-
+</table>
+</form>
 </section>
 
 <jsp:include page="footer.jsp" />
