@@ -37,12 +37,45 @@ String grade = "";
 try {
 	conn = Util.getConnection();
 	stmt = conn.createStatement();
-	String sql = "SELECT * FROM member_tbl_02"
+	String sql = "SELECT * FROM member_tbl_02 ORDER BY custno";
+	ResultSet rs = stmt.executeQuery(sql);
+	while(rs.next()) {
+		grade = rs.getString("grade") ;
+		switch(grade) {
+		case "A" :
+			grade = "VIP";
+			break;
+		case "B" :
+			grade = "일반";
+			break;
+		case "C" :
+			grade = "직원";
+			break;
+	}
+%>
+
+<tr>
+	<td> <a href = "modify.jsp?mod_custno=<%=rs.getString("custno") %>"> <%=rs.getString("custno") %> </a> </td>
+	<td> <%=rs.getString("custname") %> </td>
+	<td> <%=rs.getString("phone") %> </td>
+	<td> <%=rs.getString("address") %> </td>
+	<td> <%=rs.getDate("joindate") %> </td>
+	<td> <%=grade%> </td>
+	<td> <%=rs.getString("city")%> </td>
+</tr>
+
+<%
+	}
+}
+
+catch(Exception e) {
+	e.printStackTrace();
 }
 %>
 
 </table>
 </form>
+
 </section>
 
 <jsp:include page="footer.jsp" />
