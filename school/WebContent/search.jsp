@@ -12,7 +12,7 @@
 
 <section style="position:fixed; top:70px; left:0px; width:100%; height:100%;
 background-color:lightgray">
-<h2 style="text-align:center"> 과목별 성적 조회</h2>
+<h2 style="text-align:center"> 과목별 성적 조회 </h2>
 </section>
 
 <jsp:include page="footer.jsp"></jsp:include>
